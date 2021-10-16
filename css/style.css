@@ -1,17 +1,7 @@
-.row{
-  text-align: center;
-}
-.card{
-  display: inline-block;
-  width: 60px;
-  height: 100px;
-  background-color: #eee;
-  cursor: pointer;
-}
-.card:hover {
-  border: 10px soild black;
-  box-sizing: border-box;
-}
-#ca1{
-  background-color:red;
+
+.gird{
+display:flex;
+flex-wrap: wrap;
+height: 300px;
+width: 400px;
 }

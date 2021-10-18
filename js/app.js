@@ -33,35 +33,66 @@
 /*------------- Variables (state) -------------*/
 let cards = [
   "dA","dA","dQ","dQ","dK","dK","dJ","dJ","d10","d10","d09","d09","d08","d08","d07","d07",]
-  let existingCards = [];
-  let flippedCards = 0;
-  let allowFlip = true;
+  let existingCards = []
+  let flippedCards = 0
+  let allowFlip = true
 /*--------- Cached Element References ---------*/
-let deck1El = document.querySelectorAll(".card");
+let deck1El = document.querySelectorAll(".card")
 
 /*-------------- Event Listeners --------------*/
-
-
-/*----------------- Functions -----------------*/
-
 deck1El.forEach((item) => {
   item.addEventListener("click", (event) => {
 
     if (allowFlip) {
-      processClick(event);
+      processClick(event)
     }
   })
 })
 
+/*----------------- Functions -----------------*/
+
+
+
 function processClick(event) {
   if (flippedCards < 2) {
-    const cardId = event.target.id;
-    const generatedCard = createCard(cardId);
-    flipCard(cardId, generatedCard);
+    const cardId = event.target.id
+    const generatedCard = createCard(cardId)
+    flipCard(cardId, generatedCard)
     flippedCards++
     allowFlip = false
     setTimeout(function () {
       detectMatch()
     }, 1000)
   }
+}
+
+function detectMatch() {
+  const allFlippedCards = document.querySelectorAll(".flipped")
+  const flippedCardInfo = []
+  if (allFlippedCards.length < 2) {
+    allowFlip = true
+    return
+  }
+
+  allFlippedCards.forEach((singleNode) => {
+    const foundCard = existingCards.find(
+      (subCard) => singleNode.id === subCard.cardid
+    )
+    flippedCardInfo.push(foundCard)
+  })
+
+  if (flippedCardInfo[0].card === flippedCardInfo[1].card) {
+    allFlippedCards.forEach((singleNode) => {
+      singleNode.classList.replace("flipped", "matched")
+    })
+    //winner detected!
+    flippedCards = 0
+    //detect if no cards are left
+    allowFlip = true
+    detectAllMatchs()
+    return
+  }
+  flippedCards = 0
+  flipCardsMarkedFlipped()
+  allowFlip = true
 }

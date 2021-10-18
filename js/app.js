@@ -47,7 +47,9 @@ console.log(deck1El)
 
 let replayBtn = document.querySelector("#replay-button")
 
+const lightDarkBtn = document.querySelector("#light-dark-button")
 
+const body = document.querySelector("body")
 
 
 //console.log(replayBtn)
@@ -66,6 +68,7 @@ deck1El.forEach((item) => {
   })
 })
 
+
 // we want to flip all the cards back over
 replayBtn.addEventListener("click", reset)
 //
@@ -80,11 +83,12 @@ function reset(){
   })
   console.log("clicked")
   }
+
+
+
+
 // console.log(replayBtn)
 /*----------------- Functions -----------------*/
-
-
-
 function handleClick(event) {
   if (flippedCards < 2) {
     const cardId = event.target.id
@@ -103,9 +107,7 @@ function flipCard(cardId, generatedCard) {
   const foundCard = document.querySelector(`#${cardId}`)
   foundCard.classList.replace("back-red", generatedCard)
   foundCard.classList.add("flipped")
-
 }
-
 function detectMatch() {
   const allFlippedCards = document.querySelectorAll(".flipped")
   const flippedCardInfo = []
@@ -176,6 +178,3 @@ function detectAllMatchs() {
     document.querySelector("#message").innerText = "You won the game congrats!!!"
   }
 }
-// function reset {
-
-// }

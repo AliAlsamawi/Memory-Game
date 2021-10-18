@@ -59,6 +59,8 @@ const body = document.querySelector("body")
 
 
 /*-------------- Event Listeners --------------*/
+lightDarkBtn.addEventListener("click", toggleLightDark)
+
 deck1El.forEach((item) => {
   item.addEventListener("click", (event) => {
     
@@ -178,3 +180,17 @@ function detectAllMatchs() {
     document.querySelector("#message").innerText = "You won the game congrats!!!"
   }
 }
+
+function toggleLightDark() {
+  body.className = body.className === "dark" ? "" : "dark"
+}
+function checkDarkPref() {
+  if (
+    window.matchMedia("(prefers-color-scheme:dark)").matches &&
+    body.className !== "dark"
+  ) {
+    toggleLightDark()
+  }
+}
+
+checkDarkPref()

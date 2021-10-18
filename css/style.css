@@ -1,2 +1,52 @@
+body {
+  --body-bg: #8a8b9b;
+  --btn-text-color: #2a2a2a;
+  --card-text-color: #3e3e3e;
+  --header-bg: #007bbe;
+  --header-text-color: #d8d8d8;
+  --inverted-btn-text-color: #eaeaea;
+  --light-dark-btn-bg: #1d1e2b;
+  --light-dark-btn-content: "Dark Mode";
+  --tay: #d0a617;
+  --ye: #454654;
+  background-color: var(--body-bg);
+}
+
+body.dark {
+
+    --body-bg: #22232b;
+    --btn-text-color: #eaeaea;
+    --card-text-color: #dedede;
+    --header-bg: #005e9d;
+    --header-text-color: #d8d8d8;
+    --inverted-btn-text-color: #2a2a2a;
+    --light-dark-btn-bg: linear-gradient(to right top, #444655, #595b6b, #6f7181,
+      #868898, #9ea0b0, #acaebe, #bbbccd, #cacbdc, #d2d4e5, #dadced, #e3e5f6, #ebeeff);
+    --light-dark-btn-content: "Light Mode";
+    --tay: linear-gradient(to right top, #560185, #6b0092, #7e009b, #89009b, 
+      #920097, #a7008b, #bd0281, #ac0064, #bd134f, #c52f39, #c54a22, #be6300);
+    --ye: linear-gradient(to right top, #213555, #213c59, #22425d, #254960,
+      #2a4f63, #264c61, #224860, #1e455e, #173757, #18294e, #1d1941, #210632);
+    background-color: var(--body-bg);
+  }
+  
 
 
+h1 {
+  background-color: var(--header-bg);
+  font-family: var(--serif);
+}
+.btn {
+color: var(--btn-text-color);
+}
+
+#light-dark-button {
+  background-color: var(--light-dark-btn-bg);
+  background-image: var(--light-dark-btn-bg);
+}
+
+#light-dark-button::after {
+  border: none;
+  color: var(--inverted-btn-text-color);
+  content: var(--light-dark-btn-content);
+}

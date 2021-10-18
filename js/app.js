@@ -43,7 +43,13 @@ let cards = [
 /*--------- Cached Element References ---------*/
 
 let deck1El = document.querySelectorAll(".card")
+console.log(deck1El)
+
 let replayBtn = document.querySelector("#replay-button")
+
+
+
+
 //console.log(replayBtn)
 // let classes = deck1El.classList
 // console.log(classes)
@@ -60,15 +66,20 @@ deck1El.forEach((item) => {
   })
 })
 
-replayBtn.addEventListener("click", console.log("Hi"))
 // we want to flip all the cards back over
+replayBtn.addEventListener("click", reset)
 //
-// function reset(){
-//   existingCards = []
-//   flippedCards = 0
-//   allowFlip = true
-  
-//   }
+function reset(){
+  existingCards = []
+  flippedCards = 0
+  allowFlip = true
+  deck1El.forEach(function(card){
+    card.classList.remove("flipped")
+    card.classList.add("back-red")
+    console.log("hello",card)
+  })
+  console.log("clicked")
+  }
 // console.log(replayBtn)
 /*----------------- Functions -----------------*/
 
@@ -92,6 +103,7 @@ function flipCard(cardId, generatedCard) {
   const foundCard = document.querySelector(`#${cardId}`)
   foundCard.classList.replace("back-red", generatedCard)
   foundCard.classList.add("flipped")
+
 }
 
 function detectMatch() {

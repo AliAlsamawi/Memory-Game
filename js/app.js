@@ -30,30 +30,51 @@
 
 /*----------------- Constants -----------------*/
 
+let existingCards = []
+let flippedCards = 0
+let allowFlip = true
+
+
+
 /*------------- Variables (state) -------------*/
 let cards = [
   "dA","dA","dQ","dQ","dK","dK","dJ","dJ","d10","d10","d09","d09","d08","d08","d07","d07",]
-  let existingCards = []
-  let flippedCards = 0
-  let allowFlip = true
+
 /*--------- Cached Element References ---------*/
+
 let deck1El = document.querySelectorAll(".card")
+let replayBtn = document.querySelector("#replay-button")
+//console.log(replayBtn)
+// let classes = deck1El.classList
+// console.log(classes)
+
+
 
 /*-------------- Event Listeners --------------*/
 deck1El.forEach((item) => {
   item.addEventListener("click", (event) => {
-
+    
     if (allowFlip) {
-      processClick(event)
+      handleClick(event)
     }
   })
 })
 
+replayBtn.addEventListener("click", console.log("Hi"))
+// we want to flip all the cards back over
+//
+// function reset(){
+//   existingCards = []
+//   flippedCards = 0
+//   allowFlip = true
+  
+//   }
+// console.log(replayBtn)
 /*----------------- Functions -----------------*/
 
 
 
-function processClick(event) {
+function handleClick(event) {
   if (flippedCards < 2) {
     const cardId = event.target.id
     const generatedCard = createCard(cardId)
@@ -62,8 +83,15 @@ function processClick(event) {
     allowFlip = false
     setTimeout(function () {
       detectMatch()
-    }, 1000)
+      
+    }, 900)
   }
+}
+
+function flipCard(cardId, generatedCard) {
+  const foundCard = document.querySelector(`#${cardId}`)
+  foundCard.classList.replace("back-red", generatedCard)
+  foundCard.classList.add("flipped")
 }
 
 function detectMatch() {
@@ -74,16 +102,16 @@ function detectMatch() {
     return
   }
 
-  allFlippedCards.forEach((singleNode) => {
+  allFlippedCards.forEach((eachSingelCard) => {
     const foundCard = existingCards.find(
-      (subCard) => singleNode.id === subCard.cardid
+      (subCard) => eachSingelCard.id === subCard.cardid
     )
     flippedCardInfo.push(foundCard)
   })
 
   if (flippedCardInfo[0].card === flippedCardInfo[1].card) {
-    allFlippedCards.forEach((singleNode) => {
-      singleNode.classList.replace("flipped", "matched")
+    allFlippedCards.forEach((eachSingelCard) => {
+      eachSingelCard.classList.replace("flipped", "matched")
     })
     //winner detected!
     flippedCards = 0
@@ -96,3 +124,46 @@ function detectMatch() {
   flipCardsMarkedFlipped()
   allowFlip = true
 }
+
+
+function createCard(cardId) {
+  //see if that card exists already
+  const foundCard = existingCards.find(
+    (playedCardObj) => playedCardObj.cardid === cardId
+  )
+  if (foundCard) {
+    return foundCard.card
+  }
+
+  const randomIndex = Math.floor(Math.random() * cards.length)
+  const newCard = cards[randomIndex]
+  //splice it off our list of cards
+  cards.splice(randomIndex, 1)
+  existingCards.push({ cardid: cardId, card: newCard });
+  return newCard
+}
+
+function flipCardsMarkedFlipped() {
+  const flippedCards = document.querySelectorAll(".flipped")
+  flippedCards.forEach((item) => {
+    item.className = ""
+    item.classList.add("card", "small", "back-red", "shadow")
+  })
+}
+
+function detectAllMatchs() {
+  const allCards = document.querySelectorAll(".card");
+  //see if all the cards are matched
+  let matched = 0
+  allCards.forEach((singleCard) => {
+    if (singleCard.classList.contains("matched")) {
+      matched++
+    }
+  });
+  if (matched === allCards.length) {
+    document.querySelector("#message").innerText = "You won the game congrats!!!"
+  }
+}
+// function reset {
+
+// }

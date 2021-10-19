@@ -84,14 +84,14 @@ function reset(){
 reset()
 
 function theTimeLeft(){
-  let timeLeft = 60
-  let timerId = setInterval(function() {
+let timeLeft = 5
+let timerId = setInterval(function() {
     countDownEl.textContent = `${timeLeft} seconds remaining!`
     timeLeft -= 1
     if (timeLeft <= 0 ){
-      countDownEl.textContent = 'time is up, you have to restart'
-      clearInterval(timerId)
+      countDownEl.textContent = 'Time is up. Start Over'
       gameActive = false
+      clearInterval(timerId)
     }
     console.log(timeLeft)
   }, 1000)
@@ -118,7 +118,7 @@ function handleClick(event) {
       setTimeout(function () {
         detectMatch()
         
-      }, 900)
+      }, 1000)
     }
   }
 }

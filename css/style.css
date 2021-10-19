@@ -53,14 +53,16 @@ justify-content: space-around;
 #light-dark-button {
   background-color: var(--light-dark-btn-bg);
   background-image: var(--light-dark-btn-bg);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  font-size: 18px;
+  position: left;
 }
 
 #light-dark-button::after {
   border: none;
   color: var(--inverted-btn-text-color);
   content: var(--light-dark-btn-content);
+}
+
+div {
+  color: red;
+  position: center;
 }

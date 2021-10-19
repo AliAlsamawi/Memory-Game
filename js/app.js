@@ -33,8 +33,7 @@
 let existingCards = []
 let flippedCards = 0
 let allowFlip = true
-
-
+let gameActive =true
 
 /*------------- Variables (state) -------------*/
 let cards = [
@@ -51,10 +50,8 @@ const lightDarkBtn = document.querySelector("#light-dark-button")
 
 const body = document.querySelector("body")
 
+let countDownEl = document.getElementById ("countdown")
 
-//console.log(replayBtn)
-// let classes = deck1El.classList
-// console.log(classes)
 
 
 
@@ -62,19 +59,17 @@ const body = document.querySelector("body")
 lightDarkBtn.addEventListener("click", toggleLightDark)
 
 deck1El.forEach((item) => {
-  item.addEventListener("click", (event) => {
-    
-    if (allowFlip) {
-      handleClick(event)
-    }
-  })
+  item.addEventListener("click",handleClick)
 })
 
 
 // we want to flip all the cards back over
 replayBtn.addEventListener("click", reset)
+//you need to have a start function that will start the count down
+//then you will start the timeout
 //
 function reset(){
+  gameActive = true
   existingCards = []
   flippedCards = 0
   allowFlip = true
@@ -84,7 +79,27 @@ function reset(){
     console.log("hello",card)
   })
   console.log("clicked")
-  }
+  theTimeLeft()
+} 
+reset()
+
+function theTimeLeft(){
+  let timeLeft = 60
+  let timerId = setInterval(function() {
+    countDownEl.textContent = `${timeLeft} seconds remaining!`
+    timeLeft -= 1
+    if (timeLeft <= 0 ){
+      countDownEl.textContent = 'time is up, you have to restart'
+      clearInterval(timerId)
+      gameActive = false
+    }
+    console.log(timeLeft)
+  }, 1000)
+}
+//theTimeLeft()
+// setTimeout(theTimeLeft, 5000)
+
+
 
 
 
@@ -92,16 +107,19 @@ function reset(){
 // console.log(replayBtn)
 /*----------------- Functions -----------------*/
 function handleClick(event) {
-  if (flippedCards < 2) {
-    const cardId = event.target.id
-    const generatedCard = createCard(cardId)
-    flipCard(cardId, generatedCard)
-    flippedCards++
-    allowFlip = false
-    setTimeout(function () {
-      detectMatch()
-      
-    }, 900)
+  if (gameActive){
+
+    if (flippedCards < 2) {
+      const cardId = event.target.id
+      const generatedCard = createCard(cardId)
+      flipCard(cardId, generatedCard)
+      flippedCards++
+      allowFlip = false
+      setTimeout(function () {
+        detectMatch()
+        
+      }, 900)
+    }
   }
 }
 
@@ -188,9 +206,11 @@ function checkDarkPref() {
   if (
     window.matchMedia("(prefers-color-scheme:dark)").matches &&
     body.className !== "dark"
-  ) {
-    toggleLightDark()
+    ) {
+      toggleLightDark()
+    }
   }
-}
+  checkDarkPref()
+  
 
-checkDarkPref()
+

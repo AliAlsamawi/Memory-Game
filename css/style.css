@@ -55,7 +55,8 @@ justify-content: space-around;
 #light-dark-button {
   background-color: var(--light-dark-btn-bg);
   background-image: var(--light-dark-btn-bg);
-  position: left;
+  display: flex;
+
 }
 
 #light-dark-button::after {
@@ -68,4 +69,8 @@ div {
   color: red;
   position: center;
   font-family: 'Orbitron', sans-serif;;
+}
+.mainButtons {
+display: flex;
+gap: 20px;
 }

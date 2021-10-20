@@ -88,7 +88,7 @@ function reset(){
 reset()
 
 function theTimeLeft(){
-let timeLeft = 60
+let timeLeft = 70
 let timerId = setInterval(function() {
     countDownEl.textContent = `${timeLeft} seconds remaining!`
     timeLeft -= 1
@@ -100,15 +100,6 @@ let timerId = setInterval(function() {
     console.log(timeLeft)
   }, 900)
 }
-//theTimeLeft()
-// setTimeout(theTimeLeft, 5000)
-
-
-
-
-
-
-// console.log(replayBtn)
 /*----------------- Functions -----------------*/
 function handleClick(event) {
   if (gameActive){

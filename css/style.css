@@ -18,6 +18,8 @@ body {
   justify-content: center;
   min-height: 100vh;
   background-color: yellow;
+  background-image: linear-gradient(to right top, #d16ba5, #f9718f, #ff8370, #ffa24e, #ffc731, #eddb37, #d8ed48, #bdff63, #93ff8f, #6fffb7, #58ffd8, #5ffbf1);
+ 
 }
 
 body.dark {
@@ -36,6 +38,7 @@ body.dark {
     --ye: linear-gradient(to right top, #213555, #213c59, #22425d, #254960,
       #2a4f63, #264c61, #224860, #1e455e, #173757, #18294e, #1d1941, #210632);
     background-color: var(--body-bg);
+    background-image: linear-gradient(to right top, #051937, #59335f, #ab4f6c, #e98164, #ffc75f);
     
   }
   

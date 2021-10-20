@@ -29,15 +29,15 @@
   //     if a match change the flipped class to match so flipped doesn't happen
 
 /*----------------- Constants -----------------*/
+let cards = [
+  "dA","dA","dQ","dQ","dK","dK","dJ","dJ","d10","d10","d09","d09","d08","d08","d07","d07",]
+
+/*------------- Variables (state) -------------*/
 
 let existingCards = []
 let flippedCards = 0
 let allowFlip = true
 let gameActive =true
-
-/*------------- Variables (state) -------------*/
-let cards = [
-  "dA","dA","dQ","dQ","dK","dK","dJ","dJ","d10","d10","d09","d09","d08","d08","d07","d07",]
 
 /*--------- Cached Element References ---------*/
 
@@ -64,10 +64,14 @@ deck1El.forEach((item) => {
 
 
 // we want to flip all the cards back over
-replayBtn.addEventListener("click", reset)
+replayBtn.addEventListener("click", reloadPage)
 //you need to have a start function that will start the count down
 //then you will start the timeout
 //
+function reloadPage() {
+  location.reload()
+}
+
 function reset(){
   gameActive = true
   existingCards = []
@@ -84,7 +88,7 @@ function reset(){
 reset()
 
 function theTimeLeft(){
-let timeLeft = 5
+let timeLeft = 60
 let timerId = setInterval(function() {
     countDownEl.textContent = `${timeLeft} seconds remaining!`
     timeLeft -= 1
@@ -94,7 +98,7 @@ let timerId = setInterval(function() {
       clearInterval(timerId)
     }
     console.log(timeLeft)
-  }, 1000)
+  }, 900)
 }
 //theTimeLeft()
 // setTimeout(theTimeLeft, 5000)

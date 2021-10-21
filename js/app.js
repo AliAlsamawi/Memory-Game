@@ -180,6 +180,7 @@ function flipCardsMarkedFlipped() {
   })
 }
 
+
 function detectAllMatchs() {
   const allCards = document.querySelectorAll(".card");
   //see if all the cards are matched
@@ -191,6 +192,8 @@ function detectAllMatchs() {
   });
   if (matched === allCards.length) {
     document.querySelector("#message").innerText = "You won the game congrats!!!"
+    countDownEl.style.display = "none"
+  
   }
 }
 

@@ -19,7 +19,7 @@ body {
   min-height: 100vh;
   background-color: yellow;
   background-image: linear-gradient(to right top, #d16ba5, #f9718f, #ff8370, #ffa24e, #ffc731, #eddb37, #d8ed48, #bdff63, #93ff8f, #6fffb7, #58ffd8, #5ffbf1);
- 
+
 }
 
 body.dark {

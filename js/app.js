@@ -82,7 +82,7 @@ function reset(){
 reset()
 
 function theTimeLeft(){
-let timeLeft = 70
+let timeLeft = 100
 let timerId = setInterval(function() {
     countDownEl.textContent = `${timeLeft} seconds remaining!`
     timeLeft -= 1

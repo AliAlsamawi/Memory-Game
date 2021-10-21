@@ -42,7 +42,7 @@ let gameActive =true
 /*--------- Cached Element References ---------*/
 
 let deck1El = document.querySelectorAll(".card")
-console.log(deck1El)
+
 
 let replayBtn = document.querySelector("#replay-button")
 
@@ -74,9 +74,9 @@ function reset(){
   deck1El.forEach(function(card){
     card.classList.remove("flipped")
     card.classList.add("back-red")
-    console.log("hello",card)
+    
   })
-  console.log("clicked")
+  
   theTimeLeft()
 } 
 reset()
@@ -91,7 +91,7 @@ let timerId = setInterval(function() {
       gameActive = false
       clearInterval(timerId)
     }
-    console.log(timeLeft)
+    
   }, 900)
 }
 /*----------------- Functions -----------------*/
@@ -149,14 +149,12 @@ function detectMatch() {
 }
 
 function createCard(cardId) {
-  //see if that card exists already
   const foundCard = existingCards.find(
     (playedCardObj) => playedCardObj.cardid === cardId
   )
-  if (foundCard) {
+if (foundCard) {
     return foundCard.card
   }
-
   const randomIndex = Math.floor(Math.random() * cards.length)
   const newCard = cards[randomIndex]
   //splice it off our list of cards
@@ -164,6 +162,7 @@ function createCard(cardId) {
   existingCards.push({ cardid: cardId, card: newCard });
   return newCard
 }
+
 
 function flipCardsMarkedFlipped() {
   const flippedCards = document.querySelectorAll(".flipped")

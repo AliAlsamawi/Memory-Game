@@ -1,5 +1,4 @@
-Welcome to Test Your Might:
-The Memory game is a game that takes two cards that are selected and flips them. If they are a match then the cards will stay on. This will go on until you finish the game or times runs 
+Welcome to Test Your Might: The Memory Game is a game that takes two cards that are selected and flips them. If they are a match then the cards will stay on. This will go on until you finish the game or times runs
 
 Getting Started:
 Deployed link: https://testyourmight.netlify.app/

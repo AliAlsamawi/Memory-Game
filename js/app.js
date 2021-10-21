@@ -51,17 +51,12 @@ const lightDarkBtn = document.querySelector("#light-dark-button")
 const body = document.querySelector("body")
 
 let countDownEl = document.getElementById ("countdown")
-
-
-
-
 /*-------------- Event Listeners --------------*/
 lightDarkBtn.addEventListener("click", toggleLightDark)
 
 deck1El.forEach((item) => {
   item.addEventListener("click",handleClick)
 })
-
 
 // we want to flip all the cards back over
 replayBtn.addEventListener("click", reloadPage)
@@ -71,7 +66,6 @@ replayBtn.addEventListener("click", reloadPage)
 function reloadPage() {
   location.reload()
 }
-
 function reset(){
   gameActive = true
   existingCards = []
@@ -88,7 +82,7 @@ function reset(){
 reset()
 
 function theTimeLeft(){
-let timeLeft = 70
+let timeLeft = 10
 let timerId = setInterval(function() {
     countDownEl.textContent = `${timeLeft} seconds remaining!`
     timeLeft -= 1
@@ -153,7 +147,6 @@ function detectMatch() {
   flipCardsMarkedFlipped()
   allowFlip = true
 }
-
 
 function createCard(cardId) {
   //see if that card exists already

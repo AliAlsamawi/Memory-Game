@@ -191,6 +191,8 @@ function detectAllMatchs() {
 
 function toggleLightDark() {
   body.className = body.className === "dark" ? "" : "dark"
+  document.getElementById("message").classList.add("darkText")
+ 
 }
 function checkDarkPref() {
   if (

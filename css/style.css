@@ -1,3 +1,5 @@
+
+
 body {
   --body-bg: #8a8b9b;
   --btn-text-color: #2a2a2a;
@@ -41,8 +43,13 @@ body.dark {
     background-image: linear-gradient(to right top, #051937, #59335f, #ab4f6c, #e98164, #ffc75f);
     
   }
+  body.dark#message{
+    background-color: white;
+  }
   
-
+.darkText{
+  color: white;
+}
 
 
 h1 {
